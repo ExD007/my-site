@@ -14,8 +14,7 @@
     :root{
       --bg:#f5f6f8; --text:#222; --muted:#6b7280; --card:#fff; --primary:#222;
       --accent:#d9534f; --radius:12px; --shadow:0 6px 22px rgba(0,0,0,.08);
-      --brand:#10b981; --warning:#f59e0b; --link:#0ea5e9;
-      --nav-bg:#fff; --nav-border:#e5e7eb;
+      --brand:#10b981; --warning:#f59e0b; --link:#0ea5e9; --nav-bg:#fff; --nav-border:#e5e7eb;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -34,13 +33,9 @@
     /* NAV */
     .nav-wrap{position:sticky;top:0;z-index:50;background:var(--nav-bg);border-bottom:1px solid var(--nav-border)}
     .nav{display:flex;gap:8px;overflow:auto;padding:8px 0}
-    .nav a{
-      flex:0 0 auto; padding:10px 14px; border-radius:999px; text-decoration:none; color:#111; background:#f8fafc;
-      border:1px solid #e5e7eb; font-weight:600; font-size:14px; transition:background .2s, transform .2s;
-    }
-    .nav a:hover{background:#eef2f7; transform:translateY(-1px)}
-    .nav a.active{background:#111; color:#fff; border-color:#111}
-    /* Ensure anchors are not hidden behind sticky nav */
+    .nav a{flex:0 0 auto;padding:10px 14px;border-radius:999px;text-decoration:none;color:#111;background:#f8fafc;border:1px solid #e5e7eb;font-weight:600;font-size:14px;transition:background .2s, transform .2s}
+    .nav a:hover{background:#eef2f7;transform:translateY(-1px)}
+    .nav a.active{background:#111;color:#fff;border-color:#111}
     section[id]{scroll-margin-top:80px}
 
     .container{width:92%;max-width:1100px;margin:24px auto;background:var(--card);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow)}
@@ -95,8 +90,11 @@
     /* partners */
     .partners{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
     @media (min-width:700px){.partners{grid-template-columns:repeat(4,1fr)}}
-    .partner{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;text-align:center}
-    .partner img{max-width:120px;max-height:40px;opacity:.9}
+    .partner{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
+    .partner img{max-width:140px;max-height:48px;opacity:.95}
+    .partner .title{font-weight:700}
+    .partner .phone a{color:#111;text-decoration:none}
+    .partner .phone a:hover{text-decoration:underline}
 
     /* faq */
     details{border:1px solid #e5e7eb;border-radius:12px;padding:12px;background:#fff}
@@ -122,7 +120,7 @@
     </div>
   </header>
 
-  <!-- Навигация по разделам -->
+  <!-- Навигация -->
   <div class="nav-wrap">
     <div class="wrap nav" id="top-nav">
       <a href="#promo">Акция</a>
@@ -238,7 +236,7 @@
     </form>
   </section>
 
-  <!-- Время работы + Контакты + Карта -->
+  <!-- Контакты + Время работы + Карта -->
   <section class="container grid" id="contacts" aria-labelledby="contacts-title">
     <div>
       <h2 id="contacts-title">Контакты</h2>
@@ -276,10 +274,17 @@
     <h2 id="partners-title">Партнёры</h2>
     <p class="lead">Мы используем проверенные расходники и оборудование.</p>
     <div class="partners">
-      <div class="partner"><img src="https://dummyimage.com/200x60/efefef/777.png&text=Liqui+Moly" alt="Liqui Moly"></div>
-      <div class="partner"><img src="https://dummyimage.com/200x60/efefef/777.png&text=BOSCH" alt="Bosch"></div>
-      <div class="partner"><img src="https://dummyimage.com/200x60/efefef/777.png&text=Castrol" alt="Castrol"></div>
-      <div class="partner"><img src="https://dummyimage.com/200x60/efefef/777.png&text=NGK" alt="NGK"></div>
+      <!-- Новый партнёр / поставщик -->
+      <div class="partner">
+        <img src="logo_full.svg" alt="Логотип поставщика" onerror="this.replaceWith(document.createTextNode('Логотип'));"/>
+        <div class="title">Поставщик запчастей</div>
+        <div class="phone"><a href="tel:+79789957007">+7 (978) 995-70-07</a></div>
+      </div>
+
+      <!-- Пример остальных карточек (заглушки можно заменить реальными логотипами) -->
+      <div class="partner"><img src="https://dummyimage.com/200x60/efefef/777.png&text=Liqui+Moly" alt="Liqui Moly"><div class="title">Liqui Moly</div></div>
+      <div class="partner"><img src="https://dummyimage.com/200x60/efefef/777.png&text=BOSCH" alt="Bosch"><div class="title">Bosch</div></div>
+      <div class="partner"><img src="https://dummyimage.com/200x60/efefef/777.png&text=Castrol" alt="Castrol"><div class="title">Castrol</div></div>
     </div>
   </section>
 
@@ -288,7 +293,7 @@
     <h2 id="faq-title">FAQ — частые вопросы</h2>
     <details>
       <summary>Сколько занимает диагностика?</summary>
-      <p>Обычно 15–30 минут. При сложных случаях — до 1 часа. По акции диагностика бесплатна, если ремонт выполняется в тот же день.</p>
+      <p>Обычно 20–40 минут. При сложных случаях — до 1 часа. По акции диагностика бесплатна, если ремонт выполняется в тот же день.</p>
     </details>
     <details>
       <summary>Можно ли приехать со своими запчастями?</summary>
@@ -362,7 +367,7 @@
     window.sendBooking = sendBooking;
     window.copyBooking = copyBooking;
 
-    // Подсветка активного пункта меню по скроллу
+    // Подсветка активного пункта меню
     const links = [...document.querySelectorAll('#top-nav a')];
     const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
     const observer = new IntersectionObserver((entries)=>{
@@ -374,7 +379,6 @@
         }
       });
     }, { rootMargin: "-35% 0px -60% 0px", threshold: 0.01 });
-
     ['promo','prices','booking','hours','partners','faq','contacts'].forEach(id=>{
       const el = document.getElementById(id);
       if(el) observer.observe(el);
